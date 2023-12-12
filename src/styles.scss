@@ -1,4 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+$focus-color: hsla(0, 100%, 100%, 0.88);
+$light-color: hsla(0, 100%, 100%, 0.88);
+$dark-color: #0f0f0f;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+  min-width: 360px;
+}
+aside,
+nav,
+footer,
+header,
+section {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #cccccc;
+  display: block;
+  transition: color 1s ease;
+  cursor: pointer;
+
+  :hover {
+    color: $focus-color;
+    transition: color 0.5s ease;
+  }
+  :active {
+    color: $focus-color;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: $light-color;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  color: $light-color;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
+  background: $dark-color;
+}
+
