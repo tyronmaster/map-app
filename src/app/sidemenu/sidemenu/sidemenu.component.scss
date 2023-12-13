@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+
+.menu {
+  &__list {
+    padding: 20px;
+  }
+
+  &__item {
+  }
+
+  &__link {
+    display: block;
+    color: black;
+    padding: 5px 10px;
+    transition: 0.5s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transition: 0.5s;
+    }
+  }
+}
