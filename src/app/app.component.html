@@ -4,4 +4,7 @@
   (mapClick)="onMapClick($event)"
   [center]="center"
   [zoom]="zoom"
-></google-map>
+  [contentEditable]="true"
+>
+<map-marker [position]="position" [options]="markerOptions" (mapMouseup)="onPositionChanged()"/>
+</google-map>
