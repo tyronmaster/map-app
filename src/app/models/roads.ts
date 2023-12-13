@@ -1,5 +1,6 @@
+export type RoadId = string;
 export interface Roads {
-  RoadId: string;
+  roads: Array<RoadId>;
 }
 
 export interface RoadItem {
@@ -18,13 +19,13 @@ export interface RoadItem {
   future: boolean;
   subtitle: string;
 }
-
 export interface RoadEvent extends RoadItem {
   startTimestamp: string;
 }
 
-export interface RoadWork extends RoadItem {
-  startTimestamp: string;
+export interface RoadWork extends RoadEvent {}
+export interface RoadWorks {
+  roadworks: Array<RoadWork>;
 }
 
 export interface Webcam extends RoadItem {
@@ -32,21 +33,29 @@ export interface Webcam extends RoadItem {
   imageurl: string;
   linkurl: string;
 }
+export interface Webcams {
+  webcam: Array<Webcam>;
+}
 
 export interface ParkingLorry extends RoadItem {}
-
-export interface Warning extends RoadItem {
-  startTimestamp: string;
+export interface ParkingLorries {
+  parking_lorry: Array<ParkingLorry>;
 }
 
-export interface Closure extends RoadItem {
-  startTimestamp: string;
+export interface Warning extends RoadEvent {}
+export interface Warnings {
+  warning: Array<Warning>;
 }
 
-export interface ElectricChargingStation extends RoadItem{
-
+export interface Closure extends RoadEvent {}
+export interface Closures {
+  closure: Array<Closure>;
 }
 
+export interface ElectricChargingStation extends RoadItem {}
+export interface ElectricChargingStations {
+  electric_charging_station: Array<ElectricChargingStation>;
+}
 
 enum DISPLAY_TYPE {
   ROADWORKS,
