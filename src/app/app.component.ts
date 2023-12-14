@@ -12,6 +12,8 @@ export class AppComponent {
   // ngAfterViewInit() {
   //   // this.logCenter();
   // }
+
+
   private lat = 52.632054;
   private lng = 11.138379;
 
