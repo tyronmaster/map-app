@@ -1,5 +1,3 @@
-<!-- <p *ngFor="let road of roadsList$ | async">{{ road }}</p> -->
-
 <h1 class="title">Select the road</h1>
 <p class="title__note">5 roads limit</p>
 
@@ -10,7 +8,7 @@
       [formControl]="roads"
       multiple
       [disabled]="(roads.value?.length || 0) >= 5"
-
+      (selectionChange)="onSelectionChange($event)"
     >
       <mat-select-trigger>
         {{roads.value?.[0] || ''}}
@@ -22,22 +20,21 @@
           {{ roads.value?.length === 2 ? "other" : "others" }})
         </span>
       </mat-select-trigger>
-      <mat-option
-        *ngFor="let road of roadsList$ | async; track: road"
-        [value]="road"
-        >{{ road }}</mat-option
-      >
+      <mat-option *ngFor="let road of roadsList$ | async" [value]="road">{{
+        road
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <p class="checked__roads">
+  <div class="checked__roads">
     You selected:
-    <span
-      *ngFor="let selectedRoad of roads.value; index as id"
-      class="selected__road"
-      (onClick)="onSelectedRoadClick(id)"
-      >{{ selectedRoad }}</span
+    <div
+    *ngFor="let selectedRoad of selectedRoads; index as id"
+    class="selected__road"
+    (click)="onSelectedRoadClick(id)"
+    aria-hidden="true"
     >
-  </p>
+      {{ selectedRoad }}
+    </div>
+  </div>
 </div>
-
