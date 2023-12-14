@@ -1,8 +1,12 @@
 :host {
   // height: 80px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 250px;
   padding: 10px 20px;
-  width: 100%;
-  display: block;
+  z-index: 10;
+  // width: 100%;
   background: white;
   color: #333333;
   display: flex;
@@ -12,9 +16,12 @@
   flex-wrap: wrap;
 }
 
-.title{
+.title {
   color: #333333;
-
+  margin: 0;
+  &__note {
+    font-size: 14px;
+  }
 }
 
 .selection {
@@ -31,7 +38,7 @@
 .selected__road {
   display: inline-block;
   padding: 5px 10px;
-  margin: 0 5px;
+  margin: 3px;
   background: #4a4a4a;
   color: rgba(255, 255, 255, 0.87);
   border-radius: 2px;

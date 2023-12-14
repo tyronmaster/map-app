@@ -19,6 +19,7 @@ body {
   height: 100%;
   scroll-behavior: smooth;
   min-width: 360px;
+  user-select: none;
 }
 aside,
 nav,
@@ -74,4 +75,3 @@ body {
   line-height: 20px;
   background: $dark-color;
 }
-

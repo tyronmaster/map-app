@@ -8,10 +8,12 @@ import { AppComponent } from './app.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
-import { SidemenuComponent } from './sidemenu/sidemenu/sidemenu.component';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { GetdataService } from './services/getdata.service';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, SidemenuComponent],
@@ -27,6 +29,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSlideToggleModule,
+    MatButtonModule,
   ],
 })
 export class AppModule {}
