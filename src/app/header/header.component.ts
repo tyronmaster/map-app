@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { map, take } from 'rxjs';
 import { GetdataService } from 'src/app/services/getdata.service';
 import { FormControl } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
+import { RoadId } from '../models/roads';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +13,9 @@ import { MatSelectChange } from '@angular/material/select';
 export class HeaderComponent {
   constructor(private getData: GetdataService) {}
 
-  roads = new FormControl('');
+  roadsSelector = new FormControl('');
   selectedRoads: Array<string> = [];
+  @Output() roadsSelected = new EventEmitter<Array<RoadId>>();
 
   roadsList$ = this.getData.getRoadsList().pipe(
     take(1),
@@ -21,16 +23,19 @@ export class HeaderComponent {
   );
 
   onSelectionChange(event: MatSelectChange) {
-    if ((this.roads.value?.length || 0) <= 5) {
-      this.roads.patchValue(event.value);
+    if ((this.roadsSelector.value?.length || 0) <= 5) {
+      this.roadsSelector.patchValue(event.value);
       this.selectedRoads = event.value;
+      this.roadsSelected.emit(this.selectedRoads);
     }
     return;
   }
 
   onSelectedRoadClick(id: number) {
     this.selectedRoads.splice(id, 1);
-    this.roads.patchValue(this.selectedRoads as MatSelectChange["value"]);
+    this.roadsSelector.patchValue(
+      this.selectedRoads as MatSelectChange['value']
+    );
+    this.roadsSelected.emit(this.selectedRoads);
   }
-
 }

@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { _MatSlideToggleRequiredValidatorModule } from '@angular/material/slide-toggle';
+import { RoadOptions } from '../models/road-options';
 
 @Component({
   selector: 'app-sidemenu',
@@ -8,7 +12,7 @@ import { _MatSlideToggleRequiredValidatorModule } from '@angular/material/slide-
   styleUrls: ['./sidemenu.component.scss'],
 })
 export class SidemenuComponent {
-  isChecked = {
+  isChecked: RoadOptions = {
     roadWorks: false,
     webcam: false,
     parking: false,
@@ -21,14 +25,8 @@ export class SidemenuComponent {
     electricChargingStation: false,
   };
 
-  formGroup = this._formBuilder.group({
-    enableWifi: '',
-    acceptTerms: ['', Validators.requiredTrue],
-  });
-
-  constructor(private _formBuilder: FormBuilder) {}
-
-  alertFormValues(formGroup: FormGroup) {
-    console.log(JSON.stringify(formGroup.value, null, 2));
+  @Output() options = new EventEmitter<RoadOptions>();
+  onChanges() {
+    this.options.emit(this.isChecked);
   }
 }

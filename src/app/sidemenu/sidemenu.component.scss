@@ -1,16 +1,17 @@
-:host {
+.dragable__box {
+  cursor: move;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 10px 15px;
   position: fixed;
-  color: #333333;
+  color: rgba(255, 255, 255, 0.87);
   right: 10px;
   top: 50%;
   width: 250px;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(50, 50, 50, 0.8);
   z-index: 10;
 }
 
@@ -24,7 +25,7 @@
 
   &__link {
     display: block;
-    color: #333333;
+    color: rgba(255, 255, 255, 0.87);
     padding: 5px 10px;
     transition: 0.5s;
 
@@ -33,4 +34,8 @@
       transition: 0.5s;
     }
   }
+}
+
+.mat-mdc-slide-toggle {
+  margin-bottom: 10px;
 }

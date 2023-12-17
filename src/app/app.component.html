@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-sidemenu></app-sidemenu>
+<app-header (roadsSelected)="onRoadsSelected($event)"></app-header>
+<app-sidemenu (options)="onOptionsChange($event)"></app-sidemenu>
 <google-map
   height="100vh"
   width="100%"
@@ -8,5 +8,9 @@
   [zoom]="zoom"
   [contentEditable]="true"
 >
-<map-marker [position]="position" [options]="markerOptions" (mapMouseup)="onPositionChanged()"/>
+  <map-marker
+    [position]="position"
+    [options]="markerOptions"
+    (mapMouseup)="onPositionChanged()"
+  />
 </google-map>

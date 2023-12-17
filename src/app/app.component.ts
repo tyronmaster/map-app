@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { GoogleMap, MapMarker } from '@angular/google-maps';
+import { RoadOptions } from './models/road-options';
+import { RoadId } from './models/roads';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,6 @@ import { GoogleMap, MapMarker } from '@angular/google-maps';
 export class AppComponent {
   @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
   @ViewChild(MapMarker, { static: false }) marker!: MapMarker;
-  // ngAfterViewInit() {
-  //   // this.logCenter();
-  // }
-
 
   private lat = 52.632054;
   private lng = 11.138379;
@@ -43,4 +41,21 @@ export class AppComponent {
   // logCenter() {
   //   console.log(JSON.stringify(this.map.getCenter()));
   // }
+
+  onOptionsChange(options: RoadOptions) {
+    console.log(options);
+  }
+  ngOnInit(){
+    console.log('onInit app');
+  }
+  ngOnChanges(){
+    console.log('onChanges app');
+  }
+  ngDoCheck(){
+    console.log('onDoCheck app');
+  }
+
+  onRoadsSelected(event: Array<RoadId>) {
+    console.log('app component ',event);
+  }
 }
