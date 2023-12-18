@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, SidemenuComponent],
@@ -33,6 +34,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSlideToggleModule,
     MatButtonModule,
     DragDropModule,
+    MatRadioModule,
   ],
 })
 export class AppModule {}

@@ -1,39 +1,19 @@
 <div class="dragable__box" cdkDrag>
-  <mat-slide-toggle [(ngModel)]="isChecked.roadWorks" (change)="onChanges()"
-    >Roadworks</mat-slide-toggle
-  >
-
-  <mat-slide-toggle [(ngModel)]="isChecked.webcam" (change)="onChanges()"
-    >Webcam</mat-slide-toggle
-  >
-  <mat-slide-toggle [(ngModel)]="isChecked.parking" (change)="onChanges()"
-    >Parking</mat-slide-toggle
-  >
-  <mat-slide-toggle [(ngModel)]="isChecked.warning" (change)="onChanges()"
-    >Warning</mat-slide-toggle
-  >
-  <mat-slide-toggle [(ngModel)]="isChecked.weightLimit35"
-    >Weight limit 35t</mat-slide-toggle
-  >
-  <mat-slide-toggle [(ngModel)]="isChecked.closure" (change)="onChanges()"
-    >Closure</mat-slide-toggle
-  >
-  <mat-slide-toggle [(ngModel)]="isChecked.closureEntryExit"
-    >Closure entry/exit</mat-slide-toggle
-  >
-  <mat-slide-toggle
-    [(ngModel)]="isChecked.strongElectricChargingStation"
-    (change)="onChanges()"
-    >Strong charging sation</mat-slide-toggle
-  >
-  <mat-slide-toggle
-    [(ngModel)]="isChecked.shortTermRoadWorks"
-    (change)="onChanges()"
-    >Short term roadworks</mat-slide-toggle
-  >
-  <mat-slide-toggle
-    [(ngModel)]="isChecked.electricChargingStation"
-    (change)="onChanges()"
-    >Charging station</mat-slide-toggle
-  >
+  <div class="radio__test">
+    <label for="radio-group-label">Pick your favorite season</label>
+    <mat-radio-group
+      aria-labelledby="radio-group-label"
+      class="radio-group"
+      [value]="type"
+      (change)="onChanges($event)"
+    >
+      <mat-radio-button
+        *ngFor="let type of dataTypes"
+        class="radio-button"
+        [value]="type.replaceAll(' ','_').toUpperCase()"
+      >
+        {{ type }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
 </div>

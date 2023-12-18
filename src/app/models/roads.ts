@@ -3,6 +3,7 @@ export interface Roads {
   roads: Array<RoadId>;
 }
 
+// TODO - issue types mismatch in Swagger & server response!
 export interface RoadItem {
   extent: string;
   identifier: string;
@@ -23,7 +24,13 @@ export interface RoadEvent extends RoadItem {
   startTimestamp: string;
 }
 
-export interface RoadWork extends RoadEvent {}
+export interface RoadWork extends RoadEvent {
+  impact: {
+    lower: string;
+    upper: string;
+    symbols: Array<string>;
+  };
+}
 export interface RoadWorks {
   roadworks: Array<RoadWork>;
 }
@@ -57,17 +64,17 @@ export interface ElectricChargingStations {
   electric_charging_station: Array<ElectricChargingStation>;
 }
 
-enum DISPLAY_TYPE {
-  ROADWORKS,
-  WEBCAM,
-  PARKING,
-  WARNING,
-  WEIGHT_LIMIT_35,
-  CLOSURE,
-  CLOSURE_ENTRY_EXIT,
-  STRONG_ELECTRIC_CHARGING_STATION,
-  SHORT_TERM_ROADWORKS,
-  ELECTRIC_CHARGING_STATION,
+export enum DISPLAY_TYPE {
+  ROADWORKS = 'roadworks',
+  WEBCAM = 'webcam',
+  PARKING = 'parking_lorry',
+  WARNING = 'warning',
+  WEIGHT_LIMIT_35 = '',
+  CLOSURE = 'closure',
+  CLOSURE_ENTRY_EXIT = 'closure',
+  STRONG_ELECTRIC_CHARGING_STATION = 'electric_charging_station',
+  SHORT_TERM_ROADWORKS = 'roadworks',
+  ELECTRIC_CHARGING_STATION = 'electric_charging_station',
 }
 
 interface LorryParkingFeatureIcon {
@@ -75,3 +82,19 @@ interface LorryParkingFeatureIcon {
   description: string;
   style: string;
 }
+
+export type UnionType =
+  | RoadWork
+  | Webcam
+  | ParkingLorry
+  | Warning
+  | Closure
+  | ElectricChargingStation;
+
+export type UnionTypes =
+  | RoadWorks
+  | Webcams
+  | ParkingLorries
+  | Warnings
+  | Closures
+  | ElectricChargingStation;

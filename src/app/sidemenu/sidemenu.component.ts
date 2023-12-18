@@ -1,10 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  Output,
-} from '@angular/core';
-import { _MatSlideToggleRequiredValidatorModule } from '@angular/material/slide-toggle';
-import { RoadOptions } from '../models/road-options';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { MatRadioChange } from '@angular/material/radio';
+import { DISPLAY_TYPES } from '../data/constant';
 
 @Component({
   selector: 'app-sidemenu',
@@ -12,21 +8,12 @@ import { RoadOptions } from '../models/road-options';
   styleUrls: ['./sidemenu.component.scss'],
 })
 export class SidemenuComponent {
-  isChecked: RoadOptions = {
-    roadWorks: false,
-    webcam: false,
-    parking: false,
-    warning: false,
-    weightLimit35: false,
-    closure: false,
-    closureEntryExit: false,
-    strongElectricChargingStation: false,
-    shortTermRoadWorks: false,
-    electricChargingStation: false,
-  };
+  @Output() options = new EventEmitter<string>();
 
-  @Output() options = new EventEmitter<RoadOptions>();
-  onChanges() {
-    this.options.emit(this.isChecked);
+  type = '';
+  dataTypes = DISPLAY_TYPES;
+
+  onChanges(type: MatRadioChange) {
+    this.options.emit(type.value);
   }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {
   Closure,
   Closures,
+  DISPLAY_TYPE,
   ElectricChargingStation,
   ElectricChargingStations,
   ParkingLorries,
@@ -27,6 +28,12 @@ export class GetdataService {
 
   getRoadsList(): Observable<Roads> {
     return this.http.get<Roads>(environment.AUTOBAN_API_LINK);
+  }
+
+  getRoadServices(roadId: RoadId, serviceName: string) {
+    return this.http.get(
+      environment.AUTOBAN_API_LINK + `${roadId}/services/${serviceName}`
+    );
   }
 
   getRoadWorks(roadId: RoadId): Observable<RoadWorks> {
@@ -84,12 +91,17 @@ export class GetdataService {
     );
   }
 
-  getElectricChargingStations(roadId: RoadId): Observable<ElectricChargingStations> {
+  getElectricChargingStations(
+    roadId: RoadId
+  ): Observable<ElectricChargingStations> {
     return this.http.get<ElectricChargingStations>(
-      environment.AUTOBAN_API_LINK + `/${roadId}/services/electric_charging_station`
+      environment.AUTOBAN_API_LINK +
+        `/${roadId}/services/electric_charging_station`
     );
   }
-  getElectricChargingStationById(stationId: string): Observable<ElectricChargingStation> {
+  getElectricChargingStationById(
+    stationId: string
+  ): Observable<ElectricChargingStation> {
     return this.http.get<ElectricChargingStation>(
       environment.AUTOBAN_API_LINK + `/details/warning/${stationId}`
     );
