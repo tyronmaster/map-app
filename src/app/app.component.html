@@ -8,15 +8,10 @@
   [zoom]="zoom"
   [contentEditable]="true"
 >
-  <!-- <map-marker
-    [position]="position"
-    [options]="markerOptions"
-    (mapMouseup)="onPositionChanged()"
-  /> -->
 
+<!-- *ngFor="let marker of receivedData" -->
   <map-marker
   [position]="position"
   [options]="markerOptions"
 />
 </google-map>
-<!-- *ngFor="let marker of receivedData" -->
