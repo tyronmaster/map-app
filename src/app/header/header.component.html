@@ -1,0 +1,42 @@
+<div class="dragable__box" cdkDrag>
+  <h1 class="title">Select a road</h1>
+  <p class="title__note">5 roads limit</p>
+
+  <div class="selection__container">
+    <mat-form-field>
+      <mat-label>Select a Road</mat-label>
+      <mat-select
+        [formControl]="roadsSelector"
+        multiple
+        [disabled]="(roadsSelector.value?.length || 0) >= 5"
+        (selectionChange)="onSelectionChange($event)"
+      >
+        <mat-select-trigger>
+          {{roadsSelector.value?.[0] || ''}}
+          <span
+            class="selection__addition"
+            *ngIf="(roadsSelector.value?.length || 0) > 1"
+          >
+            (+{{ (roadsSelector.value?.length || 0) - 1 }}
+            {{ roadsSelector.value?.length === 2 ? "other" : "others" }})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let road of roadsList$ | async" [value]="road">{{
+          road
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="checked__roads">
+      You selected:
+      <div
+        *ngFor="let selectedRoad of selectedRoads; index as id"
+        class="selected__road"
+        (click)="onSelectedRoadClick(id)"
+        aria-hidden="true"
+      >
+        {{ selectedRoad }}
+      </div>
+    </div>
+  </div>
+</div>

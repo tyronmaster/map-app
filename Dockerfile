@@ -10,3 +10,5 @@ RUN npm run build --prod
 FROM nginx:alpine
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist/map-app /usr/share/nginx/html
+
+EXPOSE 80
